@@ -38,10 +38,15 @@ f. sdb2 – ext4 – rest of sdb disk (MOUNT:/home) \
 
 ## Preparing dependencies and distribution update
 
-Due to the need of initramfs command, **Update the kernel**: 
-1. Download the kernel update here () or in the git
+#### Update the kernel (Due to the need of initramfs command)
+
+**1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
 2. Go to the folder containing the kernel update
-3. 
+3. copy the files to the kernel folder
+```shell
+% sudo cp kbl_guc_ver9_14.bin /lib/firmware/i915
+% sudo cp bxt_guc_ver8_7.bin /lib/firmware/i915
+```
 
 A shortcut would be to run the script:
 
