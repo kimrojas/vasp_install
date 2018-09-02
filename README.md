@@ -6,9 +6,9 @@ In this project, I will be installing vasp and its gpu port. The main compiler f
 
 The following main softwares will be discussed in the following sections:
 
-1. Intel Compiler Installation
-2. NVIDIA driver and Cuda Installation
-3. VASP and its GPU port building 
+a. Intel Compiler Installation
+b. NVIDIA driver and Cuda Installation
+c. VASP and its GPU port building 
 
 ## Computer specification
 
@@ -24,18 +24,37 @@ d. Storage - 128 Gb SSD + 1 Tb HDD
 I have chosen to use UBUNTU 16.04.5 LTS (Dekstop version). \
 It can be downloaded here (http://releases.ubuntu.com/16.04/). 
 
-Prepare the Boot drive ( you can follow the guide: https://www.howtogeek.com/howto/linux/create-a-bootable-ubuntu-usb-flash-drive-the-easy-way/)
+Prepare the Boot drive (you can follow this [guide](https://www.howtogeek.com/howto/linux/create-a-bootable-ubuntu-usb-flash-drive-the-easy-way/))
 
 Just proceed with the installation, I would suggest the following manual partition:
 
 a.  sda1 – linux-swap – 33gb \
 b. sda2 – ext4 – 30gb (MOUNT:/var) \
 c.  sda3 – ext4 – 10gb (MOUNT:/boot) \
-d. sda3 – ext4 – rest of sda disk (MOUNT:/opt) \
+d. sda4 – ext4 – rest of sda disk (MOUNT:/opt) \
 e.  sdb1 – ext4 – 200gb (MOUNT:/) \
 f. sdb2 – ext4 – rest of sdb disk (MOUNT:/home) \
 *Note: sda = SSD, sdb = HDD
 
+## Preparing dependencies and distribution update
+
+Due to the need of initramfs command, **Update the kernel**: 
+1. Download the kernel update here () or in the git
+2. Go to the folder containing the kernel update
+3. 
+
+A shortcut would be to run the script:
+
+```shell
+% sudo ./prepare.sh |& tee prepare_log.log
+```
+
+If this is your first time running it and not really sure if it would run then I would suggest not to procede with the running of the script. Instead follow the step-by-step procedure which is useful particularly in debugging or google-ing the problem. 
+
+```shell
+% sudo apt-get update 
+% sudo apt-get dist-upgrade
+% sudo apt-get install build
 
 
 
