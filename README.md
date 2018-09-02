@@ -125,7 +125,14 @@ If this is your first time running it and not really sure if it would run then I
 
 1. Download [Cuda 8.0](https://developer.nvidia.com/cuda-80-ga2-download-archive)
 
+Download by:
 
+![img1]
+
+![img2]
+
+[img1]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img1.PNG
+[img2]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img2.PNG
 
 reboot
 ```shell
