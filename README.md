@@ -67,22 +67,45 @@ If this is your first time running it and not really sure if it would run then I
 ```shell
 % sudo apt-get update 
 % sudo apt-get dist-upgrade
-% sudo apt-get install build-essential emacs dkms synaptic g++ g++-multilib gfortran
+% sudo apt-get -y install build-essential emacs dkms synaptic g++ g++-multilib gfortran
 % sudo apt-get update
 ```
 ## NVIDIA Driver and Cuda Installation
 
-**Prepare or copy the cuda-deps file**
+### Prepare or copy the cuda-deps file
 
 1. Create file 
 ```shell
 % gedit cuda-deps
 ```
-2. Input the following:
 
-3.	Paste the following: 
+2.	Paste the following: 
 
  > ca-certificates-java default-jre default-jre-headless fonts-dejavu-extra freeglut3 freeglut3-dev java-common libatk-wrapper-java libatk-wrapper-java-jni  libdrm-dev libgl1-mesa-dev libglu1-mesa-dev libgnomevfs2-0 libgnomevfs2-common libice-dev libpthread-stubs0-dev libsctp1 libsm-dev libx11-dev libx11-doc libx11-xcb-dev libxau-dev libxcb-dri2-0-dev libxcb-dri3-dev libxcb-glx0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-shape0-dev libxcb-sync-dev libxcb-xfixes0-dev libxcb1-dev libxdamage-dev libxdmcp-dev libxext-dev libxfixes-dev libxi-dev libxmu-dev libxmu-headers libxshmfence-dev libxt-dev libxxf86vm-dev lksctp-tools mesa-common-dev  x11proto-core-dev x11proto-damage-dev  x11proto-dri2-dev x11proto-fixes-dev x11proto-gl-dev x11proto-input-dev x11proto-kb-dev x11proto-xext-dev x11proto-xf86vidmode-dev xorg-sgml-doctools xtrans-dev libgles2-mesa-dev
+ 
+ 3. Install the dependencies
+ 
+ ```shell 
+ % cat cuda-deps | xargs sudo apt-get -y install
+ ```
+ 
+ ### Driver Installation
+ 
+ 1. Reboot 
+```shell
+%s sudo reboot now
+```
+2. On login screen access TTY1 by presing *ctrl + alt + F1*
+
+3. stop lightdm
+```shell
+Sudo service lightdm stop
+```
+
+4. 
+```shell
+sudo apt-get --purge remove nvidia-*
+ ```
 
 
 
