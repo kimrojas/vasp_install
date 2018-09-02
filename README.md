@@ -93,23 +93,46 @@ If this is your first time running it and not really sure if it would run then I
  
  1. Reboot 
 ```shell
-%s sudo reboot now
+% sudo reboot now
 ```
 2. On login screen access TTY1 by presing *ctrl + alt + F1*
 
 3. stop lightdm
 ```shell
-Sudo service lightdm stop
+% sudo service lightdm stop
 ```
 
-4. 
+4. Install the driver
 ```shell
-sudo apt-get --purge remove nvidia-*
+% sudo apt-get --purge remove nvidia-*
+% sudo add-apt-repository ppa:graphics-drivers/ppa
+% sudo apt-get update
+% sudo apt-get install nvidia-375 
+% sudo reboot now
  ```
+ 
+ 5. Check driver version
+ ```shell
+ % nvidia-smi
+ % cat /proc/driver/nvidia/version
+ ```
+6. Output should be similar to this:
+>
+
+**CHECK PLS CHECK**
+
+### Cuda Installation
+
+1. Download [Cuda 8.0](https://developer.nvidia.com/cuda-80-ga2-download-archive)
 
 
 
+reboot
+```shell
+% sudo reboot now
+```
 
+2. Download
 ## Intel Package
 
 
