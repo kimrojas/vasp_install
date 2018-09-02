@@ -6,8 +6,8 @@ In this project, I will be installing vasp and its gpu port. The main compiler f
 
 The following main softwares will be discussed in the following sections:
 
-a. Intel Compiler Installation
-b. NVIDIA driver and Cuda Installation
+a. Intel Compiler Installation \
+b. NVIDIA driver and Cuda Installation \
 c. VASP and its GPU port building 
 
 ## Computer specification
@@ -28,19 +28,22 @@ Prepare the Boot drive (you can follow this [guide](https://www.howtogeek.com/ho
 
 Just proceed with the installation, I would suggest the following manual partition:
 
-a.  sda1 – linux-swap – 33gb \
-b. sda2 – ext4 – 30gb (MOUNT:/var) \
-c.  sda3 – ext4 – 10gb (MOUNT:/boot) \
-d. sda4 – ext4 – rest of sda disk (MOUNT:/opt) \
-e.  sdb1 – ext4 – 200gb (MOUNT:/) \
-f. sdb2 – ext4 – rest of sdb disk (MOUNT:/home) \
-*Note: sda = SSD, sdb = HDD
+| Disk name   | Type       | Size  | Mount point |
+|-------------|------------|-------|-------------|
+| sda1        | Linux-swap | 33gb  |             |
+| sda2        | ext4       | 30gb  | /var        |
+| sda3        | ext4       | 10gb  | /boot       |
+| sda4        | ext4       | rest  | /opt        |
+| sdb1        | ext4       | 200gb | /           |
+| sdb2        | ext4       | rest  | /home       |
+
+*Note: sda = SSD, sdb = HDD, rest = rest of the diskspace
 
 ## Preparing dependencies and distribution update
 
-#### Update the kernel (Due to the need of initramfs command)
+### Update the kernel (Due to the need of initramfs command)
 
-**1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
+1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
 2. Go to the folder containing the kernel update
 3. copy the files to the kernel folder
 ```shell
