@@ -45,7 +45,7 @@ Just proceed with the installation, I would suggest the following manual partiti
 
 1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
 2. Go to the folder containing the kernel update
-3. copy the files to the kernel folder
+3. Copy the files to the kernel folder
 ```shell
 % sudo cp kbl_guc_ver9_14.bin /lib/firmware/i915
 % sudo cp bxt_guc_ver8_7.bin /lib/firmware/i915
@@ -170,8 +170,37 @@ Download by:
 ```shell
 nvcc -V
 ```
-2. Download
+
 ## Intel Package
+
+## VASP Installation
+
+1. Have the following file inside a folder. For my case, I have 'VASP' folder.
+> vasp.5.4.4.tar.gz \
+> patch.5.4.4.16052018.gz
+
+2. Extract the package and combine
+```shell
+% tar zxvf vasp.5.4.4.tar.gz
+% gunzip patch.5.4.4.16052018.gz
+% cp patch* vasp.5.4.4
+```
+
+3. Install
+
+
+```shell
+% cd vasp.5.4.4
+% cp /arch/makefile.include.linux_intel makefile.include
+```
+
+**Change a portion of your makefile.include depending on your system**
+
+In my system, I am using the GTX 1070 which has a compute capability of 6.1 and so  my edit is
+
+> GENCODE_ARCH := -gencode=arch=compute_30,code=\"sm_30,compute_30\" \ \
+> -gencode=arch=compute_35,code=\"sm_35,compute_35\" \ \
+> -gencode=arch=compute_61,code=\"sm_61,compute_61\"
 
 
 
