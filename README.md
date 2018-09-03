@@ -134,11 +134,42 @@ Download by:
 [img1]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img1.PNG
 [img2]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img2.PNG
 
-reboot
+2. Reboot
 ```shell
 % sudo reboot now
 ```
 
+3. on Login screen, access TTY1 by pressing 'ctrl + alt + f1'
+
+4. stop lightdm
+```shell
+% sudo service lightdm stop
+```
+
+5. Navidate to the folder containing the cuda8.0 run file (cuda_8.0.27_linux.run)
+
+6. Install
+```shell
+% chmod 755 cuda_*
+% ./cuda_8.0.27_linux.run --silent --toolkit --samples -- samplespath=/usr/local/cuda-8.0/samples --override
+```
+
+7. Designate the PATH and Library PATH
+```shell
+% gedit ~/.bashrc
+```
+**Add the following lines to the bottom of the file**
+> export PATH=$PATH:/usr/local/cuda-8.0/bin \
+> export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
+
+**Source the path afterwards**
+```shell
+% source ~/.bashrc
+```
+8. Verify the cuda installation
+```shell
+nvcc -V
+```
 2. Download
 ## Intel Package
 
