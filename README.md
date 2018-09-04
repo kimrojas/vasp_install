@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this project, I will be installing vasp and its gpu port. The main compiler for this would be an Intel compiler in combination with the NVIDIA CUDA Compiler for the gpu port. This project would serve as a workstation for our team and would also serve as a guide for those in the same confusing path as me. 
+In this project, I will be installing vasp and its gpu port. The main compiler for this would be an Intel compiler and mpi in combination with the NVIDIA CUDA Compiler for the gpu port. This project would serve as a workstation for our team and would also serve as a guide for those in the same confusing path as me. 
 
 The following main softwares will be discussed in the following sections:
 
@@ -175,18 +175,22 @@ nvcc -V
 
 ## VASP Installation
 
-1. Have the following file inside a folder. For my case, I have 'VASP' folder.
+### 1. Prepare installation directory 
+
+Have the following file inside a folder. For my case, I have 'VASP' folder.
 > vasp.5.4.4.tar.gz \
 > patch.5.4.4.16052018.gz
 
-2. Extract the package and combine
+### 2. Extract the package and combine
 ```shell
 % tar zxvf vasp.5.4.4.tar.gz
 % gunzip patch.5.4.4.16052018.gz
 % cp patch* vasp.5.4.4
+% cd vasp.5.4.4
+% patch -p0 < patch.5.4.4.16052018.gz
 ```
 
-3. Install
+### 3. Install
 
 
 ```shell
@@ -196,11 +200,42 @@ nvcc -V
 
 **Change a portion of your makefile.include depending on your system**
 
-In my system, I am using the GTX 1070 which has a compute capability of 6.1 and so  my edit is
+In my system, I am using the GTX 1070 which has a compute capability of 6.1 based on [ref.](https://developer.nvidia.com/cuda-gpus) and thus my edit on the makefile.include is:
 
-> GENCODE_ARCH := -gencode=arch=compute_30,code=\"sm_30,compute_30\" \ \
-> -gencode=arch=compute_35,code=\"sm_35,compute_35\" \ \
-> -gencode=arch=compute_61,code=\"sm_61,compute_61\"
+```shell
+% gedit makefile.include
+```
+
+Change the GENCODE_ARCH tag to:
+> GENCODE_ARCH := -gencode=arch=compute_61,code=\"sm_61,compute_61\"
+
+### 4. Building the executables
+
+#### 4.1. CPU-based VASP
+
+```shell
+% make all
+```
+
+This will install the std, ncl and gam version of vasp. The build details will be in `/build` while the executable is in `/bin`
+
+```shell
+% ls -l /build
+% ls -l /bin
+```
+
+#### 4.2. GPU-ported VASP
+
+```shell 
+% make gpu gpu_ncl
+```
+
+This will build the gpu-ported std and ncl version of VASP.
+
+```shell
+% ls -l /build
+% ls -l /bin
+
 
 
 
