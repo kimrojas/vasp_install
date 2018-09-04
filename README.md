@@ -43,9 +43,10 @@ Just proceed with the installation, I would suggest the following manual partiti
 
 ### Update the kernel (Due to the need of initramfs command)
 
-1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
-2. Go to the folder containing the kernel update
-3. Copy the files to the kernel folder
+#### 1. Download the kernel update [here](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/i915). 
+This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-missing-firmware-warnings/832528#832528) would be useful as reference. For this project, I only needed **kbl_guc_ver9_14.bin** and **bxt_guc_ver8_7.bin**
+#### 2. Go to the folder containing the kernel update
+#### 3. Copy the files to the kernel folder
 ```shell
 % sudo cp kbl_guc_ver9_14.bin /lib/firmware/i915
 % sudo cp bxt_guc_ver8_7.bin /lib/firmware/i915
@@ -91,18 +92,18 @@ If this is your first time running it and not really sure if it would run then I
  
  ### Driver Installation
  
- 1. Reboot 
+ #### 1. Reboot 
 ```shell
 % sudo reboot now
 ```
-2. On login screen access TTY1 by presing *ctrl + alt + F1*
+#### 2. On login screen access TTY1 by presing *ctrl + alt + F1*
 
-3. stop lightdm
+#### 3. stop lightdm
 ```shell
 % sudo service lightdm stop
 ```
 
-4. Install the driver
+#### 4. Install the driver
 ```shell
 % sudo apt-get --purge remove nvidia-*
 % sudo add-apt-repository ppa:graphics-drivers/ppa
@@ -111,19 +112,19 @@ If this is your first time running it and not really sure if it would run then I
 % sudo reboot now
  ```
  
- 5. Check driver version
+ #### 5. Check driver version
  ```shell
  % nvidia-smi
  % cat /proc/driver/nvidia/version
  ```
-6. Output should be similar to this:
+#### 6. Output should be similar to this:
 >
 
 **CHECK PLS CHECK**
 
 ### Cuda Installation
 
-1. Download [Cuda 8.0](https://developer.nvidia.com/cuda-80-ga2-download-archive)
+#### 1. Download [Cuda 8.0](https://developer.nvidia.com/cuda-80-ga2-download-archive)
 
 Download by:
 
@@ -134,27 +135,27 @@ Download by:
 [img1]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img1.PNG
 [img2]: https://github.com/kimrojas/vasp_install/blob/master/readmereference/img2.PNG
 
-2. Reboot
+#### 2. Reboot
 ```shell
 % sudo reboot now
 ```
 
-3. on Login screen, access TTY1 by pressing 'ctrl + alt + f1'
+#### 3. on Login screen, access TTY1 by pressing 'ctrl + alt + f1'
 
-4. stop lightdm
+#### 4. stop lightdm
 ```shell
 % sudo service lightdm stop
 ```
 
-5. Navidate to the folder containing the cuda8.0 run file (cuda_8.0.27_linux.run)
+#### 5. Navidate to the folder containing the cuda8.0 run file (cuda_8.0.27_linux.run)
 
-6. Install
+#### 6. Install
 ```shell
 % chmod 755 cuda_*
 % ./cuda_8.0.27_linux.run --silent --toolkit --samples -- samplespath=/usr/local/cuda-8.0/samples --override
 ```
 
-7. Designate the PATH and Library PATH
+#### 7. Designate the PATH and Library PATH
 ```shell
 % gedit ~/.bashrc
 ```
@@ -166,7 +167,7 @@ Download by:
 ```shell
 % source ~/.bashrc
 ```
-8. Verify the cuda installation
+#### 8. Verify the cuda installation
 ```shell
 nvcc -V
 ```
@@ -175,13 +176,13 @@ nvcc -V
 
 ## VASP Installation
 
-### 1. Prepare installation directory 
+#### 1. Prepare installation directory 
 
 Have the following file inside a folder. For my case, I have 'VASP' folder.
 > vasp.5.4.4.tar.gz \
 > patch.5.4.4.16052018.gz
 
-### 2. Extract the package and combine
+#### 2. Extract the package and combine
 ```shell
 % tar zxvf vasp.5.4.4.tar.gz
 % gunzip patch.5.4.4.16052018.gz
@@ -190,7 +191,7 @@ Have the following file inside a folder. For my case, I have 'VASP' folder.
 % patch -p0 < patch.5.4.4.16052018.gz
 ```
 
-### 3. Install
+#### 3. Install
 
 
 ```shell
@@ -209,9 +210,9 @@ In my system, I am using the GTX 1070 which has a compute capability of 6.1 base
 Change the GENCODE_ARCH tag to:
 > GENCODE_ARCH := -gencode=arch=compute_61,code=\"sm_61,compute_61\"
 
-### 4. Building the executables
+#### 4. Building the executables
 
-#### 4.1. CPU-based VASP
+##### 4.1. CPU-based VASP
 
 ```shell
 % make all
@@ -224,7 +225,7 @@ This will install the std, ncl and gam version of vasp. The build details will b
 % ls -l /bin
 ```
 
-#### 4.2. GPU-ported VASP
+##### 4.2. GPU-ported VASP
 
 ```shell 
 % make gpu gpu_ncl
