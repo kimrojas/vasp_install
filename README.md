@@ -174,6 +174,13 @@ nvcc -V
 
 ## Intel Package
 
+#### 1. Download the package.
+
+
+
+
+
+
 ## VASP Installation
 
 #### 1. Prepare installation directory 
@@ -218,8 +225,7 @@ Change the GENCODE_ARCH tag to:
 % make all
 ```
 
-This will install the std, ncl and gam version of vasp. The build details will be in `/build` while the executable is in `/bin`
-
+This will build the std, ncl and gam version of vasp. 
 ```shell
 % ls -l /build
 % ls -l /bin
@@ -233,9 +239,12 @@ This will install the std, ncl and gam version of vasp. The build details will b
 
 This will build the gpu-ported std and ncl version of VASP.
 
+#### 4.3. Verify the building process
+The build details will be in `/build` while the executable is in `/bin`
 ```shell
 % ls -l /build
 % ls -l /bin
+```
 
 
 
