@@ -54,16 +54,7 @@ This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-mi
 
 ### Preparations proper
 
-#### EASY WAY
-
-A shortcut would be to run the script:
-
-```shell
-% sudo ./prepare.sh |& tee prepare_log.log
-```
-If this is your first time running it and not really sure if it would run then I would suggest not to procede with the running of the script. Instead follow the step-by-step procedure which is useful particularly in debugging or google-ing the problem. 
-
-#### MANUAL WAY
+#### Updates and dependencies
 
 ```shell
 % sudo apt-get update 
