@@ -195,14 +195,16 @@ Just keep on accepting everything and enter your Intel license to activate the c
 
 add the following lines at the bottom of the file
 
-> `#`-------------------- \
-> `#` Intel Compiler ( Fortran & C++ ) environmental setting \
+For the Intel Compiler ( Fortran & C++ ) environmental setting \
+
 >  export PATH=$PATH:/opt/intel/vtune_amplifier_xe \
 >  export PATH=$PATH:/opt/intel/inspector_xe \
 >  source /opt/intel/bin/compilervars.sh intel64 \
-> `#` mpiifort (intel mpi) \
-> source /opt/intel/impi/5.1.3.258/bin64/mpivars.sh \
-> `#`--------------------
+
+for the mpiifort (intel mpi) 
+
+> source /opt/intel/impi/5.1.3.258/bin64/mpivars.sh 
+
 
 #### 5. Source
 
