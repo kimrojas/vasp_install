@@ -10,6 +10,8 @@ a. Intel Compiler Installation \
 b. NVIDIA driver and Cuda Installation \
 c. VASP and its GPU port building 
 
+For this section, I uploaded the installers that I used at the time of my installation. All except for the VASP source code as it is sensitive. VASP source code comes witht the license, please refer to [VASP](https://www.vasp.at/index.php/faqs/71-how-can-i-purchase-a-vasp-license)
+
 ## Computer specification
 
 I know that this guide would surely not be universally applicable in the wide range of hardwares. The computer that I am installing this in is characterized by the following
@@ -192,12 +194,20 @@ Just keep on accepting everything and enter your Intel license to activate the c
 
 add the following lines at the bottom of the file
 
-> 
+> `#`-------------------- \
+> `#` Intel Compiler ( Fortran & C++ ) environmental setting \
+>  export PATH=$PATH:/opt/intel/vtune_amplifier_xe \
+>  export PATH=$PATH:/opt/intel/inspector_xe \
+> source /opt/intel/bin/compilervars.sh intel64 \
+> `#` mpiifort (intel mpi) \
+> source /opt/intel/impi/5.1.3.258/bin64/mpivars.sh \
+> `#`--------------------
 
+#### 5. Source
 
-
-
-
+```shell
+% source ~/.bashrc
+```
 
 ## VASP Installation
 
