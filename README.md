@@ -155,7 +155,7 @@ Download by:
 % ./cuda_8.0.27_linux.run --silent --toolkit --samples -- samplespath=/usr/local/cuda-8.0/samples --override
 ```
 
-#### 7. Designate the PATH and Library PATH
+#### 7. Designate the CUDA PATH 
 ```shell
 % gedit ~/.bashrc
 ```
@@ -174,7 +174,34 @@ nvcc -V
 
 ## Intel Package
 
-#### 1. Download the package.
+#### 1. Download the package [here](https://software.intel.com/en-us/parallel-studio-xe)
+
+Note: For students and faculty that requires the compiler, the license is **FREE**. Just register as a student/faculty and you will be given a license. 
+
+#### 2. Extract the package
+
+```shell
+% tar zxvf parallel*
+```
+
+#### 3. Install the package
+
+```shell
+% cd parallel*
+% sudo ./install.sh
+```
+
+Just keep on accepting everything and enter your Intel license to activate the compiler. 
+
+#### 4. Designate the INTEL PATH
+
+```shell
+% gedit ~/.bashrc
+```
+
+add the following lines at the bottom of the file
+
+> 
 
 
 
