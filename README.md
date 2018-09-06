@@ -146,6 +146,7 @@ Download by:
 ```shell
 % chmod 755 cuda_*
 % ./cuda_8.0.27_linux.run --silent --toolkit --samples -- samplespath=/usr/local/cuda-8.0/samples --override
+% ./cuda_8.0.27_linux.run --silent --toolkit --toolkitpath=/opt/cuda-8.0/ --samples -- samplespath=/opt/cuda-8.0/samples --override (optional)
 ```
 
 #### 7. Designate the CUDA PATH 
@@ -198,7 +199,7 @@ add the following lines at the bottom of the file
 > `#` Intel Compiler ( Fortran & C++ ) environmental setting \
 >  export PATH=$PATH:/opt/intel/vtune_amplifier_xe \
 >  export PATH=$PATH:/opt/intel/inspector_xe \
-> source /opt/intel/bin/compilervars.sh intel64 \
+>  source /opt/intel/bin/compilervars.sh intel64 \
 > `#` mpiifort (intel mpi) \
 > source /opt/intel/impi/5.1.3.258/bin64/mpivars.sh \
 > `#`--------------------
@@ -252,12 +253,7 @@ Change the GENCODE_ARCH tag to:
 ```shell
 % make all
 ```
-
-This will build the std, ncl and gam version of vasp. 
-```shell
-% ls -l /build
-% ls -l /bin
-```
+This will build the std, ncl and gam version of VASP
 
 ##### 4.2. GPU-ported VASP
 
@@ -269,12 +265,19 @@ This will build the gpu-ported std and ncl version of VASP.
 
 #### 4.3. Verify the building process
 The build details will be in `/build` while the executable is in `/bin`
+
 ```shell
 % ls -l /build
 % ls -l /bin
 ```
 
+## Global PATHs
 
-
+access as root 
+```shell 
+% gedit /etc/environment
+% gedit /profile.d/cuda.sh
+% gedit /profile.d/intel.sh
+```
 
 
