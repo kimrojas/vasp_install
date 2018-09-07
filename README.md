@@ -32,12 +32,9 @@ Just proceed with the installation, I would suggest the following manual partiti
 
 | Disk name   | Type       | Size  | Mount point |
 |-------------|------------|-------|-------------|
-| sda1        | Linux-swap | 33gb  |             |
-| sda2        | ext4       | 30gb  | /var        |
-| sda3        | ext4       | 10gb  | /boot       |
-| sda4        | ext4       | rest  | /opt        |
-| sdb1        | ext4       | 200gb | /           |
-| sdb2        | ext4       | rest  | /home       |
+| sda1        | ext4       | rest  | /           |
+| sdb1        | ext4       | rest  | /home       |
+| sdb2        | Linux-swap | 33gb  |             |
 
 *Note: sda = SSD, sdb = HDD, rest = rest of the diskspace
 
