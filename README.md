@@ -37,7 +37,7 @@ Just proceed with the installation, I would suggest the following manual partiti
 | sdb2        | Linux-swap | 33gb  |             |
 
 *Note: sda = SSD, sdb = HDD, rest = rest of the diskspace
-
+*Note: Set pcie_aspm=off or disable the similar parameter in bios
 ## Preparing dependencies and distribution update
 
 ### Update the kernel (Due to the need of initramfs command)
