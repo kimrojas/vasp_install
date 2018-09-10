@@ -98,15 +98,43 @@ This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-mi
 % sudo apt-get --purge remove nvidia-*
 % sudo add-apt-repository ppa:graphics-drivers/ppa
 % sudo apt-get update
-% sudo apt-get install nvidia-375 
+% sudo apt-get install nvidia-384 
 % sudo reboot now
  ```
  
  #### 5. Check driver version
+ 
  ```shell
  % nvidia-smi
- % cat /proc/driver/nvidia/version
  ```
+ ```
++-----------------------------------------------------------------------------+ 
+| NVIDIA-SMI 384.130                Driver Version: 384.130                   | 
+|-------------------------------+----------------------+----------------------+  
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC | 
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. | 
+|===============================+======================+======================| 
+|   0  GeForce GTX 1070    Off  | 00000000:01:00.0 Off |                  N/A | 
+| 31%   32C    P8     9W / 151W |    128MiB /  8114MiB |      0%      Default | 
++-------------------------------+----------------------+----------------------+ 
+ 
++-----------------------------------------------------------------------------+ 
+| Processes:                                                       GPU Memory | 
+|  GPU       PID   Type   Process name                             Usage      | 
+|=============================================================================| 
+|    0      1068      G   /usr/lib/xorg/Xorg                            96MiB | 
+|    0      2039      G   compiz                                        29MiB | 
++-----------------------------------------------------------------------------+ 
+```
+```shell
+ % cat /proc/driver/nvidia/version
+```
+
+>NVRM version: NVIDIA UNIX x86_64 Kernel Module  384.130  Wed Mar 21 03:37:26 PDT 2018 \
+>GCC version:  gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) 
+
+
+
 #### 6. Output should be similar to this:
 >
 
