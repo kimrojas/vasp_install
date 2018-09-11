@@ -170,7 +170,6 @@ Download by:
 #### 6. Install
 ```shell
 % chmod 755 cuda_*
-% ./cuda_8.0.27_linux.run --silent --toolkit --samples -- samplespath=/usr/local/cuda-8.0/samples --override
 % ./cuda_8.0.27_linux.run --silent --toolkit --toolkitpath=/opt/cuda-8.0/ --samples -- samplespath=/opt/cuda-8.0/samples --override (optional)
 ```
 
@@ -197,10 +196,12 @@ nvcc -V
 
 Note: For students and faculty that requires the compiler, the license is **FREE**. Just register as a student/faculty and you will be given a license. 
 
+For this project I downloaded the 2017 update 7 version as it is compatible with Ubuntu 16.04.5
+
 #### 2. Extract the package
 
 ```shell
-% tar zxvf parallel*
+% tar zxvf parallel_studio_xe_2017_update7
 ```
 
 #### 3. Install the package
@@ -208,6 +209,11 @@ Note: For students and faculty that requires the compiler, the license is **FREE
 ```shell
 % cd parallel*
 % sudo ./install.sh
+```
+
+Or use the by GUI interface
+```
+% sudo ./install_GUI.sh
 ```
 
 Just keep on accepting everything and enter your Intel license to activate the compiler. 
@@ -223,12 +229,12 @@ add the following lines at the bottom of the file
 For the Intel Compiler ( Fortran & C++ ) environmental setting \
 
 >  export PATH=$PATH:/opt/intel/vtune_amplifier_xe \
->  export PATH=$PATH:/opt/intel/inspector_xe \
+>  export PATH=$PATH:/opt/intel/inspector \
 >  source /opt/intel/bin/compilervars.sh intel64 \
 
 for the mpiifort (intel mpi) 
 
-> source /opt/intel/impi/5.1.3.258/bin64/mpivars.sh 
+> source /opt/intel/impi/2017.4.259/bin64/mpivars.sh 
 
 
 #### 5. Source
@@ -251,16 +257,19 @@ Have the following file inside a folder. For my case, I have 'VASP' folder.
 % gunzip patch.5.4.4.16052018.gz
 % cp patch* vasp.5.4.4
 % cd vasp.5.4.4
-% patch -p0 < patch.5.4.4.16052018.gz
+% patch -p0 < patch.5.4.4.16052018
 ```
 
 #### 3. Install
 
+##### Prepare the Makefile.include
 
 ```shell
 % cd vasp.5.4.4
 % cp /arch/makefile.include.linux_intel makefile.include
 ```
+
+##### Prepare the GPU stuff
 
 **Change a portion of your makefile.include depending on your system**
 
@@ -269,6 +278,11 @@ In my system, I am using the GTX 1070 which has a compute capability of 6.1 base
 ```shell
 % gedit makefile.include
 ```
+Change the following to:
+
+>CC    = mpicc \
+>CXX   = mpiicpc \
+>NVCC  :=$(CUDA_ROOT)/bin/nvcc -ccbin=mpicc \
 
 Change the GENCODE_ARCH tag to:
 > GENCODE_ARCH := -gencode=arch=compute_61,code=\"sm_61,compute_61\"
