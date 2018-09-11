@@ -315,18 +315,35 @@ The build details will be in `/build` while the executable is in `/bin`
 
 For security reasons, 
 
+## PATHing
+ 
+### Move the  bin directory 
+You should move the bin directory to a directory that is accessible by all users, and also so that you can delete the source codes for security reasons (license and file copying)
 
+For my project, I place it in
 
-## Global PATHs
+> /opt/vasp/
 
-access as root 
-```shell 
-% gedit /etc/environment
-% gedit /profile.d/cuda.sh
-% gedit /profile.d/intel.sh
+by:
+
+```shell
+cp -r /bin/ /opt/vasp/
 ```
 
+###  PATH
+```shell 
+% gedit ~/.bashrc
+```
 
+Add the following lines at the bottom
+
+> export PATH=$PATH:/opt/vasp
+
+```shell
+source ~/.bashrc
+```
+
+Look the the first error in the error section. If you have a comparable system, you should definetly do fix 2 right away to save time. 
 
 # On errors
 
@@ -352,3 +369,5 @@ Fix 2: Permanent
 and change 
 
  kernel.yama.ptrace_scope = 1 *to* kernel.yama.ptrace_scope = 0
+ 
+ Fix credits to [github](https://github.com/firemodels/fds/issues/5853)
