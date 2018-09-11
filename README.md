@@ -371,3 +371,10 @@ and change
  kernel.yama.ptrace_scope = 1 *to* kernel.yama.ptrace_scope = 0
  
  Fix credits to [github](https://github.com/firemodels/fds/issues/5853)
+ 
+ 
+ # Future update 
+ 
+ ## SLURM
+ 
+ https://github.com/mknoxnv/ubuntu-slurm
