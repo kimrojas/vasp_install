@@ -345,6 +345,9 @@ source ~/.bashrc
 
 Look the the first error in the error section. If you have a comparable system, you should definetly do fix 2 right away to save time. 
 
+*reboot* 
+
+
 # On errors
 
 When running mpirun for 2 or more cores and then you get a 
