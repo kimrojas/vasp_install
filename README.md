@@ -107,6 +107,17 @@ This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-mi
  ```shell
  % nvidia-smi
  ```
+
+```shell
+ % cat /proc/driver/nvidia/version
+```
+
+
+
+
+
+#### 6. Output should be similar to this:
+
  ```
 +-----------------------------------------------------------------------------+ 
 | NVIDIA-SMI 384.130                Driver Version: 384.130                   | 
@@ -126,19 +137,11 @@ This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-mi
 |    0      2039      G   compiz                                        29MiB | 
 +-----------------------------------------------------------------------------+ 
 ```
-```shell
- % cat /proc/driver/nvidia/version
-```
+
 
 >NVRM version: NVIDIA UNIX x86_64 Kernel Module  384.130  Wed Mar 21 03:37:26 PDT 2018 \
 >GCC version:  gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.10) 
 
-
-
-#### 6. Output should be similar to this:
->
-
-**CHECK PLS CHECK**
 
 ### Cuda Installation
 
@@ -170,7 +173,7 @@ Download by:
 #### 6. Install
 ```shell
 % chmod 755 cuda_*
-% ./cuda_8.0.27_linux.run --silent --toolkit --toolkitpath=/opt/cuda-8.0/ --samples -- samplespath=/opt/cuda-8.0/samples --override (optional)
+% ./cuda_8.0.61_375.26_linux.run --silent --toolkit --toolkitpath=/opt/cuda-8.0/ --samples -- samplespath=/opt/cuda-8.0/samples --override 
 ```
 
 #### 7. Designate the CUDA PATH 
@@ -178,8 +181,8 @@ Download by:
 % gedit ~/.bashrc
 ```
 **Add the following lines to the bottom of the file**
-> export PATH=$PATH:/usr/local/cuda-8.0/bin \
-> export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-8.0/lib64
+> export PATH=$PATH:/opt/cuda-8.0/bin \
+> export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/cuda-8.0/lib64
 
 **Source the path afterwards**
 ```shell
@@ -187,7 +190,13 @@ Download by:
 ```
 #### 8. Verify the cuda installation
 ```shell
-nvcc -V
+%nvcc -V
+```
+
+#### 9. Patch 
+
+```shell
+% sudo ./cuda_8.0.61.2_linux.run --silent --accept-eula --installdir=/opt/cuda-8.0
 ```
 
 ## Intel Package
