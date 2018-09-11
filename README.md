@@ -313,6 +313,8 @@ The build details will be in `/build` while the executable is in `/bin`
 % ls -l /bin
 ```
 
+For security reasons, 
+
 
 
 ## Global PATHs
@@ -334,10 +336,19 @@ When running mpirun for 2 or more cores and then you get a
 
 and something along that line then 
 
+Fix 1: Temporary (i.e. will need to be done after a reboot)
 just enter the command
 
 ```shell
 echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 ```
 
-DOnt ask me why that works, I dont know as well. 
+Fix 2: Permanent
+
+```shell
+% sudo gedit /etc/sysctl.d/10-ptrace.conf
+```
+
+and change 
+
+ kernel.yama.ptrace_scope = 1 *to* kernel.yama.ptrace_scope = 0
