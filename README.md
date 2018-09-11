@@ -226,11 +226,11 @@ Just keep on accepting everything and enter your Intel license to activate the c
 
 add the following lines at the bottom of the file
 
-For the Intel Compiler ( Fortran & C++ ) environmental setting \
+For the Intel Compiler ( Fortran & C++ ) environmental setting 
 
 >  export PATH=$PATH:/opt/intel/vtune_amplifier_xe \
 >  export PATH=$PATH:/opt/intel/inspector \
->  source /opt/intel/bin/compilervars.sh intel64 \
+>  source /opt/intel/bin/compilervars.sh intel64 
 
 for the mpiifort (intel mpi) 
 
@@ -280,9 +280,10 @@ In my system, I am using the GTX 1070 which has a compute capability of 6.1 base
 ```
 Change the following to:
 
->CC    = mpicc \
->CXX   = mpiicpc \
->NVCC  :=$(CUDA_ROOT)/bin/nvcc -ccbin=mpicc \
+>CC          = mpicc \
+>CXX         = mpiicpc \
+>CUDA_ROOT  ?= /opt/cuda-8.0/ \
+>NVCC       := $(CUDA_ROOT)/bin/nvcc -ccbin=mpicc \
 
 Change the GENCODE_ARCH tag to:
 > GENCODE_ARCH := -gencode=arch=compute_61,code=\"sm_61,compute_61\"
