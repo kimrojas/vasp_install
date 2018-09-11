@@ -313,6 +313,8 @@ The build details will be in `/build` while the executable is in `/bin`
 % ls -l /bin
 ```
 
+
+
 ## Global PATHs
 
 access as root 
@@ -323,3 +325,19 @@ access as root
 ```
 
 
+
+# On errors
+
+When running mpirun for 2 or more cores and then you get a 
+
+>Fatal error in PMPI_Alltoallv: Other MPI error, error stack:
+
+and something along that line then 
+
+just enter the command
+
+```shell
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
+
+DOnt ask me why that works, I dont know as well. 
