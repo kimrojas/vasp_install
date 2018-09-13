@@ -58,7 +58,8 @@ This [guide](https://askubuntu.com/questions/832524/updated-kernel-to-4-8-now-mi
 ```shell
 % sudo apt-get update 
 % sudo apt-get dist-upgrade
-% sudo apt-get -y install build-essential emacs dkms synaptic g++ g++-multilib gfortran
+% sudo apt-get update
+% sudo apt-get -y install build-essential emacs dkms synaptic g++ g++-multilib gfortran ssh openssh-server
 % sudo apt-get update
 ```
 ## NVIDIA Driver and Cuda Installation
