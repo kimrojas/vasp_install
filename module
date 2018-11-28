@@ -1,0 +1,23 @@
+# Module installation
+
+Follow the guide
+
+## Setting up modulefiles
+
+### Intel compiler
+
+Note: Very hard to do by hand and similarly dangerous as this will not accomodate for other stuff.
+
+First! 
+
+Initializie
+
+source /opt/intel/bin/compilervars.sh intel64
+
+Next 
+
+perl env2 -from bash -to modulecmd "/opt/intel/bin/compilervars.sh intel64" >> my_module_file
+
+This get all the append, preppend you need for the read module file. 
+
+
