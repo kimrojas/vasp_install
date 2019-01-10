@@ -1,5 +1,5 @@
 
-
+PRIMARY REFERENCE: https://ubuntuforums.org/showthread.php?t=1372508
 ibxml2-devel, openssl-devel, and boost-devel packages must be installed.
 I also have tcl (8.6 installed) 
 ### install dependencies 
@@ -35,6 +35,14 @@ This installs all components needed
 
 ### install
 `sudo make install`
+
+### add lib
+echo /usr/local/lib >> /etc/ld.so.conf
+ldconfig
+
+### setup
+
+./torque.setup root hpcl-G11D
 
 
 
