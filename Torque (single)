@@ -1,0 +1,7 @@
+
+
+ibxml2-devel, openssl-devel, and boost-devel packages must be installed.
+
+# install dependencies 
+`sudo apt-get install libboost-all-dev  libssl-dev libxml2-dev`
+
