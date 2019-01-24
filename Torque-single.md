@@ -38,24 +38,24 @@ This installs all components needed
 ### install
 `sudo make install`
 
-!NOT SURE WITH THIS. 
-service pbs_mom stop
-service pbs_server stop
-service pbs_sched  stop
+!NOT SURE WITH THIS. \
+service pbs_mom stop  \
+service pbs_server stop \
+service pbs_sched  stop \
 
-pbs_server -t create
-killall pbs_server
+pbs_server -t create \
+killall pbs_server  \
 
-echo head0.local > /etc/torque/server_name
-echo hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/acl_hosts
-echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/operators
-echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/managers
-echo "head0.local np=8 gpus=1" > /var/spool/torque/server_priv/nodes
-echo "$pbsserver head0.local" >> /var/spool/torque/mom_priv/config
-echo "logeven=255" >> /var/spool/torque/mom_priv/config
+echo head0.local > /etc/torque/server_name \
+echo hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/acl_hosts \
+echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/operators \ 
+echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/managers \
+echo "head0.local np=8 gpus=1" > /var/spool/torque/server_priv/nodes \
+echo "$pbsserver head0.local" >> /var/spool/torque/mom_priv/config \
+echo "logeven=255" >> /var/spool/torque/mom_priv/config \
 
 
-
+END \
 
 
 ### add lib
