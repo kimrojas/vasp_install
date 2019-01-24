@@ -1,9 +1,11 @@
 
 PRIMARY REFERENCE: https://ubuntuforums.org/showthread.php?t=1372508
+https://jabriffa.wordpress.com/2015/02/11/installing-torquepbs-job-scheduler-on-ubuntu-14-04-lts/
+https://github.com/adaptivecomputing/torque
 ibxml2-devel, openssl-devel, and boost-devel packages must be installed.
 I also have tcl (8.6 installed) 
 ### install dependencies 
-`sudo apt-get install libboost-all-dev  libssl-dev libxml2-dev`
+`sudo apt-get install libboost-all-dev  libssl-dev libxml2-dev libpam0g-dev`
 
 ### Download the torque repository (assume you have already downloaded git)
 
@@ -19,11 +21,11 @@ I also have tcl (8.6 installed)
 ` ./autogen.sh`
 
 ### configure (I'm including gpu capability, just remove the option for the gpu if you don't want)
-`./configure --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include` 
+`./configure --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include --with-pam` 
 
 Result: 
 > Building components: server=yes mom=yes clients=yes
->                     gui=no drmaa=no pam=no
+>                     gui=no drmaa=no pam=yes
 >PBS Machine type    : linux
 >Remote copy         : /usr/bin/scp -rpB
 >PBS home            : /var/spool/torque
