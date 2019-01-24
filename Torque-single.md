@@ -48,11 +48,11 @@ killall pbs_server  \
 
 echo head0.local > /etc/torque/server_name \
 echo hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/acl_hosts \
-echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/operators \ 
+echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/operators  \ 
 echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/managers \
 echo "head0.local np=8 gpus=1" > /var/spool/torque/server_priv/nodes \
 echo "$pbsserver head0.local" >> /var/spool/torque/mom_priv/config \
-echo "logeven=255" >> /var/spool/torque/mom_priv/config \
+echo "logeven=255" >> /var/spool/torque/mom_priv/config   \
 
 
 END \
