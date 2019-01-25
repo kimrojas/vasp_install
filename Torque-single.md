@@ -5,7 +5,7 @@ https://github.com/adaptivecomputing/torque
 ibxml2-devel, openssl-devel, and boost-devel packages must be installed.
 I also have tcl (8.6 installed) 
 ### install dependencies 
-`sudo apt-get install libboost-all-dev  libssl-dev libxml2-dev libpam0g-dev`
+`sudo apt-get install libboost-all-dev  libssl-dev libxml2-dev libpam0g-dev libtool-bin`
 
 ### Download the torque repository (assume you have already downloaded git)
 
@@ -21,22 +21,22 @@ I also have tcl (8.6 installed)
 ` ./autogen.sh`
 
 ### configure (I'm including gpu capability, just remove the option for the gpu if you don't want)
-`./configure --prefix=/opt/torque --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include --with-pam` 
-
-Result: 
-> Building components: server=yes mom=yes clients=yes
->                     gui=no drmaa=no pam=yes
->PBS Machine type    : linux
->Remote copy         : /usr/bin/scp -rpB
->PBS home            : /var/spool/torque
->Default server      : hpcl-G11CD
-This installs all components needed
+`./configure --prefix=/opt/torque --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include ` 
 
 ### launch make
 `make`
 
 ### install
 `sudo make install`
+
+`cp debian.pbs_mom /etc/init.d/pbs_mom && update-rc.d pbs_mom defaults
+cp debian.pbs_sched /etc/init.d/pbs_sched && update-rc.d pbs_sched defaults
+cp debian.pbs_server /etc/init.d/pbs_server && update-rc.d pbs_server defaults
+cp debian.trqauthd /etc/init.d/trqauthd && update-rc.d trqauthd defaults`
+
+
+
+
 
 !NOT SURE WITH THIS. \
 service pbs_mom stop  \
@@ -75,3 +75,31 @@ ldconfig
 
 
 
+./configure --with-debug --prefix=/usr/local/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include 2>&1 | tee configure_torque.log
+
+make 2>&1 | tee make.log
+****************************************************
+
+checkinstall /home/hpcl/torque/torque-master/torque-package-server-linux-x86_64.sh --install 2>&1 | tee checkinstall_torque_server.log
+checkinstall /home/hpcl/torque/torque-master/torque-package-clients-linux-x86_64.sh --install 2>&1 | tee checkinstall_torque_clients.log
+checkinstall /home/hpcl/torque/torque-master/torque-package-mom-linux-x86_64.sh --install 2>&1 | tee checkinstall_torque_mom.log
+
+cp debian.pbs_mom /etc/init.d/pbs_mom && update-rc.d pbs_mom defaults
+cp debian.pbs_sched /etc/init.d/pbs_sched && update-rc.d pbs_sched defaults
+cp debian.pbs_server /etc/init.d/pbs_server && update-rc.d pbs_server defaults
+cp debian.trqauthd /etc/init.d/trqauthd && update-rc.d trqauthd defaults
+
+mkdir /etc/torque
+echo head0.local >> /etc/torque/server_name
+echo hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/acl_hosts 
+echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/operators
+echo root@hpcl-G11CD > /var/spool/torque/server_priv/acl_svr/managers
+
+echo head0.local > /var/spool/torque/server_name   
+echo "head0.local np=8 gpus=1" > /var/spool/torque/server_priv/nodes
+
+echo "$pbsserver head0.local" > /var/spool/torque/mom_priv/config
+echo "logeven=255" >> /var/spool/torque/mom_priv/config
+
+PATH=$PATH:/usr/local/torque/bin
+PATH=$PATH:/usr/local/torque/sbin
