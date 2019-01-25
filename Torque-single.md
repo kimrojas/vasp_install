@@ -21,7 +21,7 @@ I also have tcl (8.6 installed)
 ` ./autogen.sh`
 
 ### configure (I'm including gpu capability, just remove the option for the gpu if you don't want)
-`./configure --prefix=/opt/torque --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include ` 
+`./configure --prefix=/usr/local/torque --with-debug --prefix=/opt/torque --enable-nvidia-gpus --with-nvml-lib=/opt/cuda-8.0/lib64/stubs --with-nvml-include=/opt/cuda-8.0/include ` 
 
 ### launch make
 `make`
@@ -29,9 +29,9 @@ I also have tcl (8.6 installed)
 ### install
 `sudo make install`
 
-`cp debian.pbs_mom /etc/init.d/pbs_mom && update-rc.d pbs_mom defaults \
-cp debian.pbs_sched /etc/init.d/pbs_sched && update-rc.d pbs_sched defaults \
-cp debian.pbs_server /etc/init.d/pbs_server && update-rc.d pbs_server defaults \
+`cp debian.pbs_mom /etc/init.d/pbs_mom && update-rc.d pbs_mom defaults
+cp debian.pbs_sched /etc/init.d/pbs_sched && update-rc.d pbs_sched defaults
+cp debian.pbs_server /etc/init.d/pbs_server && update-rc.d pbs_server defaults
 cp debian.trqauthd /etc/init.d/trqauthd && update-rc.d trqauthd defaults`
 
 
