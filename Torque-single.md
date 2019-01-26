@@ -46,6 +46,11 @@ cp debian.pbs_server /etc/init.d/pbs_server && update-rc.d pbs_server defaults
 killall pbs_server            #kills the pbs_server created by torque.setup
 pbs_server -t create
 killall pbs_server
+
+/etc/init.d/pbs_mom restart
+/etc/init.d/pbs_sched restart
+/etc/init.d/pbs_server restart
+
 ```
 
 ### EDIT THE SERVER NAMES
